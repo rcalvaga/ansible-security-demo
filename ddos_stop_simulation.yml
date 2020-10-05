@@ -1,0 +1,14 @@
+---
+- name: Kill simulated attack
+  hosts: all
+
+  tasks:
+    - name: Disable attack timer
+      systemd:
+        name: curl.timer
+        state: stopped
+
+    - name: Stop attack service
+      systemd:
+        name: curl.service
+        state: stopped

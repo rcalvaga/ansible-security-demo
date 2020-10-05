@@ -1,0 +1,29 @@
+---
+- name: start attack
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: copy systemd timer file
+      copy:
+        src: curl.timer
+        dest: /etc/systemd/system/curl.timer
+            
+    - name: copy systemd service file
+      template:
+        src: curl.service.j2
+        dest: /etc/systemd/system/curl.service
+            
+    - name: systemd daemon-reload
+      systemd:
+        daemon_reload: yes
+
+    - name: systemctl start curl timer
+      systemd:
+        name: curl.timer
+        state: started
+
+    - name: systemctl start curl service
+      systemd:
+        name: curl.service
+        state: started
