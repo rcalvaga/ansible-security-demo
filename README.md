@@ -1,2 +1,2 @@
-# workshop-examples
-Ansible Workshop Example Playbooks for Security Automation
+# Ansible Security Demo Playbooks
+Ansible Workshop Playbooks for Security Automation
